@@ -8,6 +8,7 @@ References
 
 * Anton Polinger, Developing Microsoft Media Foundation Applications, ISBN: 978-0-7356-5659-8
 * MSDN, [http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85\).aspx)
+* Windows 8.1 Media extension sample [http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096](http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096)
 
 Core concepts
 -------------
