@@ -52,3 +52,9 @@ __Reader/Writer__
 * Source Reader - IMFSourceReader
 * Sink Writer - IMFSinkWriter
 
+Threading
+---------
+
+MF is a free-threaded system, which means that COM interface methods can be invoked from arbitrary threads. Therefore, when calling CoInitializeEx(), you must initialize COM with the apartment-threaded object concurrency by passing in the COINIT_APARTMENTTHREADED parameter. Your objects might also need to use synchronization primitives, such as locks, to control access to internal variables by concurrently running threads.
+
+See also [http://msdn.microsoft.com/en-us/library/windows/desktop/ee892371(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ee892371(v=vs.85\).aspx)
