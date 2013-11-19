@@ -7,7 +7,7 @@ References
 ----------
 
 * Anton Polinger, Developing Microsoft Media Foundation Applications, ISBN: 978-0-7356-5659-8
-* MSDN, [http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx)
+* MSDN, [http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85\).aspx)
 
 Core concepts
 -------------
@@ -19,10 +19,10 @@ An architectural overview of the Media Foundation Architecture:
 Two different programming models:
 
 * __Media pipeline__ - Contains Media Source, MFT and Media Sink objects. Any object can be implemented by the application.
-    1. [http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85).aspx)
+    1. [http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85\).aspx)
 * __Source reader & Sink writer__
-    1. [http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85).aspx)
-    2. [http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85).aspx)
+    1. [http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85\).aspx)
+    2. [http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85\).aspx)
 
 Examples
 --------
