@@ -5,10 +5,10 @@ Sample implementations of different Microsoft Media Foundation components
 ## References
 
 * Anton Polinger, Developing Microsoft Media Foundation Applications, ISBN: 978-0-7356-5659-8
-* MSDN, [http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85\).aspx)
-* Windows 8.1 Media extension sample, [http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096](http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096)
-* Channel9, [http://channel9.msdn.com/](http://channel9.msdn.com/)
-* Windows Runtime C++ Template Library (WRL), [http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx](http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx)
+* MSDN, Media Foundation Architecture, [http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85\).aspx)
+* MSDN, Windows 8.1 Media extension sample, [http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096](http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096)
+* tenouk.com, DLLs and linking, [http://www.tenouk.com/ModuleBB.html](http://www.tenouk.com/ModuleBB.html) 
+* MSDN, Windows Runtime C++ Template Library (WRL), [http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx](http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx)
 
 ## Core MF concepts
 
@@ -32,7 +32,7 @@ See github projects:
 
 ## Plumbing
 
-As usual when it comes to creating components that should fit into a complex framework (e.g. __MF__) there are some plumbing involved. With plumbing I mean all the bulk code that has to be written to implement the required interfaces but not including the actual logic, as well as functionality for handling the packaging of the component. Below is a short list:
+As usual when it comes to creating components that should fit into a complex framework (e.g. __MF__) there are some plumbing involved. With plumbing I mean all the bulk code that has to be written to hande the packaging of the component as well as to fulfill interfaces that allows the component to be loaded by the framework. In the case of _MF_ , below is a short list:
 
 * DLLs, linking and exporting
 * MIDL and MIDLRT
@@ -40,7 +40,9 @@ As usual when it comes to creating components that should fit into a complex fra
 
 ### DLLs, linking and exporting
 
-Blah 
+An MF extension is usually implemented as a DLL. 
+
+http://www.tenouk.com/ModuleBB.html 
 
 ### MIDL and MIDLRT
 
