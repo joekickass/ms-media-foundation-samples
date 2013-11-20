@@ -19,16 +19,18 @@ An architectural overview of the Media Foundation Architecture:
 Two different programming models:
 
 * __Media pipeline__ - Contains Media Source, MFT and Media Sink objects. Any object can be implemented by the application.
-    1. [http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85\).aspx)
+  1. [http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms703912(v=vs.85\).aspx)
 * __Source reader & Sink writer__
-    1. [http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85\).aspx)
-    2. [http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85\).aspx)
+  1. [http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/dd940436(v=vs.85\).aspx)
+  2. [http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ff819461(v=vs.85\).aspx)
 
 ## Examples
 
 See github projects:
 
-    https://github.com/joekickass/media-foundation-samples
+```
+https://github.com/joekickass/media-foundation-samples
+```
 
 ## Plumbing
 
@@ -40,9 +42,60 @@ As usual when it comes to creating components that should fit into a complex fra
 
 ### DLLs, linking and exporting
 
-An MF extension is usually implemented as a DLL. 
+An MF extension is usually implemented as a DLL. The following few steps are a common procedure:
 
-http://www.tenouk.com/ModuleBB.html 
+1. Create a Win (Phone) 8.x DLL project
+
+2. Add a definition file (*.def) that defines all exported functions of the shared library (the export list)
+  
+   __*.def:__
+   ```
+   EXPORTS
+       DllGetActivationFactory             PRIVATE
+       DllCanUnloadNow                     PRIVATE
+       DllGetClassObject                   PRIVATE
+   ```
+
+3. __dllmain.cpp__ defines the entry point of the DLL; `DllMain()`. Let it also implement the exported functions:
+
+   __dllmain.cpp:__
+   ```cpp
+   #include "pch.h" // pch.h should include <wrl/module.h>
+
+   using namespace Microsoft::WRL;
+
+   BOOL APIENTRY DllMain(HMODULE hInstance, DWORD ul_reason_for_call, LPVOID)
+   {
+       switch (ul_reason_for_call)
+       {
+       case DLL_PROCESS_ATTACH:
+           DisableThreadLibraryCalls(hInstance);
+           break;
+       case DLL_THREAD_ATTACH:
+       case DLL_THREAD_DETACH:
+       case DLL_PROCESS_DETACH:
+           break;
+       }
+       return TRUE;
+   }
+
+   HRESULT WINAPI DllGetActivationFactory(HSTRING activatibleClassId, IActivationFactory** factory)
+   {
+       return Module<InProc>::GetModule().GetActivationFactory(activatibleClassId, factory);
+   }
+
+   HRESULT WINAPI DllCanUnloadNow()
+   {
+       return Module<InProc>::GetModule().Terminate() ? S_OK : S_FALSE;
+   }
+
+   STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID FAR* ppv)
+   {
+       return Module<InProc>::GetModule().GetClassObject(rclsid, riid, ppv);
+   }
+   ```
+
+More info on DLLs and linking can be found on [http://www.tenouk.com/ModuleBB.html](http://www.tenouk.com/ModuleBB.html)
 
 ### MIDL and MIDLRT
 
