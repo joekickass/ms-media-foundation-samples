@@ -8,7 +8,8 @@ References
 
 * Anton Polinger, Developing Microsoft Media Foundation Applications, ISBN: 978-0-7356-5659-8
 * MSDN, [http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/ms696219(v=vs.85\).aspx)
-* Windows 8.1 Media extension sample [http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096](http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096)
+* Windows 8.1 Media extension sample, [http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096](http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096)
+* Channel9, [http://channel9.msdn.com/](http://channel9.msdn.com/)
 
 Core concepts
 -------------
@@ -36,7 +37,8 @@ Windows Runtime Template Language (WRL)
 
 In most situations, it is recommended to use C++/CX to interact with the Windows Runtime. But in the case of hybrid components that implement both COM and Windows Runtime interfaces, such as Media Foundation objects, this is not possible. C++/CX can only create Windows Runtime objects. So, for hybrid objects it is recommended that you use WRL to interact with the Windows Runtime. Be aware that Windows Runtime C++ Template Library has limited support for implementing COM interfaces.
 
-[http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx](http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx)
+* [http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx](http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx)
+* [http://channel9.msdn.com/Events/Windows-Camp/Developing-Windows-8-Metro-style-apps-in-Cpp/The-Windows-Runtime-Library-WRL-](http://channel9.msdn.com/Events/Windows-Camp/Developing-Windows-8-Metro-style-apps-in-Cpp/The-Windows-Runtime-Library-WRL-)
 
 Important interfaces
 --------------------
