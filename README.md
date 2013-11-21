@@ -63,9 +63,11 @@ An MF extension is usually implemented as a DLL. The following few steps are a c
        DllGetClassObject                   PRIVATE
    ```
 
-__Note:__ The *.def file needs to be referenced in project settings under:
+   __Note:__ The *.def file needs to be referenced in project settings under:
 
-* Linker -> Input -> Definition File : __mydefinitionfile.def__
+   | Setting                            | Value                |
+   | ---------------------------------- | -------------------- |
+   | Linker -> Input -> Definition File | mydefinitionfile.def |
 
 3. _dllmain.cpp_ defines the entry point of the DLL; `DllMain()`. Let it also implement the exported functions using some _WRL_ magic:
 
@@ -141,9 +143,11 @@ namespace Transform
 
 Right clicking on the _idl_ file and selecting _Properties_ is a shortcut to the project properties for _MIDL_. To genereate a _.winmd_ file, add the following settings:
 
-* MIDL -> General -> Enable Windows Runtime : __Yes (/winrt)__
-* MIDL -> Output -> Metadata File : __$(OutDir)%(RootNamespace).winmd__
-* MIDL -> Output -> Header File : __%(RootNamespace).winmd__
+| Setting                                   | Value                           |
+| ----------------------------------------- | ------------------------------- |
+| MIDL -> General -> Enable Windows Runtime | Yes (/winrt)                    |
+| MIDL -> Output -> Metadata File           | $(OutDir)%(RootNamespace).winmd |
+| MIDL -> Output -> Header File             | %(RootNamespace).winmd          |
 
 Note that the generated _.winmd_ file needs to be modified in order to work properly. See _StackOverflow_ for more info: 
 
