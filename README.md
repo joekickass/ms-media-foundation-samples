@@ -161,20 +161,33 @@ This means adding the following build step under project settings:
 | Custom Build Step -> General -> Command Line | ARM      | mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial |
 | Custom Build Step -> General -> Output       | Both     | $(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\$(ProjectName).winmd |
 
-Finally, the generated header file needs to be referenced in the class definition file (_*.cpp_) with a 
+Finally, the generated header file (_%(RootNamespace)\_h.h_) needs to be referenced in the class definition file (_*.cpp_) as shown in the generic example below. Notice the __InspectableClass__ using a string definition from the header, and the __ActivatableClass__ section.
 
-## Important interfaces
+```cpp
+#include "pch.h"
 
-__Media Pipeline__
+#include "RootNamespace_h.h"
+#include <wrl.h>
 
-* Media Source - IMFMediaSource
-* MFT - IMFTransform
-* Media Sink - IMFMediaSink
+using namespace Microsoft::WRL;
+using namespace Windows::Foundation;
 
-__Reader/Writer__
+namespace ABI
+{
+    namespace RootNamespace
+    {
+        class WinRTClass: public RuntimeClass<IWinRTClass>
+        {
+            InspectableClass(RuntimeClass_RootNamespace_ClassName, BaseTrust)
 
-* Source Reader - IMFSourceReader
-* Sink Writer - IMFSinkWriter
+        public:
+            WinRTClass(){}
+        };
+
+        ActivatableClass(WinRTClass);
+    }
+}
+```
 
 ## Threading
 
