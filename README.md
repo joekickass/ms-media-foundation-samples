@@ -141,7 +141,7 @@ namespace Transform
 }
 ```
 
-Right clicking on the _idl_ file and selecting _Properties_ is a shortcut to the project properties for _MIDL_. To genereate a _.winmd_ file, add the following settings:
+Right clicking on the _idl_ file and selecting _Properties_ is a shortcut to the project properties for _MIDL_. To genereate a _.winmd_ file, add the following settings.
 
 | Setting                                   | Value                           |
 | ----------------------------------------- | ------------------------------- |
@@ -155,12 +155,11 @@ Note that the generated _.winmd_ file needs to be modified in order to work prop
 
 This means adding the following build step under project settings:
 
-* Win32:
-  * Custom Build Step -> General -> Command Line : __mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial__
-* ARM:
-  * Custom Build Step -> General -> Command Line : __mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial__
-* Both:
-  * Custom Build Step -> General -> Output : __$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\$(ProjectName).winmd__
+| Setting                                      | Platform | Value                           |
+| -------------------------------------------- | ---------| ------------------------------- |
+| Custom Build Step -> General -> Command Line | Win32    | mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial |
+| Custom Build Step -> General -> Command Line | ARM      | mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial |
+| Custom Build Step -> General -> Output       | Both     | $(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\$(ProjectName).winmd |
 
 Finally, the generated header file needs to be referenced in the class definition file (_*.cpp_) with a 
 
