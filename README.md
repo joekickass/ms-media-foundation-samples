@@ -161,7 +161,7 @@ This means adding the following build step under project settings:
 | Custom Build Step -> General -> Output        | $(OutDir)%(RootNamespace).winmd |
 | Custom Build Step -> General -> Execute After | Midl                            |
 
-Finally, the generated header file (_%(RootNamespace)\_h.h_) needs to be referenced in the class definition file (_*.cpp_) as shown in the generic example below. Notice the __InspectableClass__ using a string definition from the header, and the __ActivatableClass__ section.
+Finally, the generated header file (_%(RootNamespace)\\\_h.h_) needs to be referenced in the class definition file (_*.cpp_) as shown in the generic example below. Notice the __InspectableClass__ using a string definition from the header, and the __ActivatableClass__ section.
 
 ```cpp
 #include "pch.h"
