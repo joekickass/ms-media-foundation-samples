@@ -157,7 +157,7 @@ This means adding the following build step under project settings:
 
 | Setting                                       | Value                           |
 | --------------------------------------------- | ------------------------------- |
-| Custom Build Step -> General -> Command Line  | mdmerge /i "$(OutDir)" /o "$(OutDir)" /partial /metadata_dir "$(WindowsSDK_MetadataPath)" 
+| Custom Build Step -> General -> Command Line  | mdmerge -v -i "$(OutDir)." -o "$(OutDir)Output" -partial -metadata_dir "$(WindowsSDK_MetadataPath)" && copy /y "$(OutDir)Output\*" "$(OutDir)" 
 | Custom Build Step -> General -> Output        | $(OutDir)%(RootNamespace).winmd |
 | Custom Build Step -> General -> Execute After | Midl                            |
 
