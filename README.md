@@ -189,6 +189,17 @@ namespace ABI
 }
 ```
 
+## MFTs
+
+A few libraries need to be referenced when creating an MFT:
+
+* mf.lib
+* mfuuid.lib
+* mfplat.lib
+
+Add them to _Linker -> Input -> Additional Dependencies_.
+
+
 ## Threading
 
 MF is a free-threaded system, which means that COM interface methods can be invoked from arbitrary threads. Therefore, when calling CoInitializeEx(), you must initialize COM with the apartment-threaded object concurrency by passing in the COINIT_APARTMENTTHREADED parameter. Your objects might also need to use synchronization primitives, such as locks, to control access to internal variables by concurrently running threads.
