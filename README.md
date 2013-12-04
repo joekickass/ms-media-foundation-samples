@@ -147,7 +147,7 @@ Right clicking on the _idl_ file and selecting _Properties_ is a shortcut to the
 | ----------------------------------------- | ------------------------------- |
 | MIDL -> General -> Enable Windows Runtime | Yes (/winrt)                    |
 | MIDL -> Output -> Metadata File           | $(OutDir)%(RootNamespace).winmd |
-| MIDL -> Output -> Header File             | %(RootNamespace).winmd          |
+| MIDL -> Output -> Header File             | %(RootNamespace)_h.h            |
 
 Note that the generated _.winmd_ file needs to be modified in order to work properly. See _StackOverflow_ for more info: 
 
