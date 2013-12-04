@@ -191,7 +191,7 @@ namespace ABI
 
 ## MFTs
 
-A few libraries need to be referenced when creating an MFT:
+A few libraries need to be referenced when creating an Effect MFT:
 
 * mf.lib
 * mfuuid.lib
@@ -199,6 +199,18 @@ A few libraries need to be referenced when creating an MFT:
 
 Add them to _Linker -> Input -> Additional Dependencies_.
 
+In managed code (e.g. the C# application where the MFT library is referenced), the class needs to be activated using the following section added to the _Package.appxmanifest_ file:
+
+```Xml
+<Extensions>
+  <Extension Category="windows.activatableClass.inProcessServer">
+    <InProcessServer>
+      <Path>EffectTransform.dll</Path>
+      <ActivatableClass ActivatableClassId="EffectTransform.Effect" ThreadingModel="both" />
+    </InProcessServer>
+  </Extension>
+</Extensions>
+```
 
 ## Threading
 
