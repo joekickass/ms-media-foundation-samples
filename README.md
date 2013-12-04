@@ -155,11 +155,11 @@ Note that the generated _.winmd_ file needs to be modified in order to work prop
 
 This means adding the following build step under project settings:
 
-| Setting                                      | Platform | Value                           |
-| -------------------------------------------- | ---------| ------------------------------- |
-| Custom Build Step -> General -> Command Line | Win32    | mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial |
-| Custom Build Step -> General -> Command Line | ARM      | mdmerge -metadata_dir "$(WindowsSDK_MetadataPath)" -o "$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)" -i "$(MSBuildProjectDirectory)" -v -partial |
-| Custom Build Step -> General -> Output       | Both     | $(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\$(ProjectName).winmd |
+| Setting                                       | Value                           |
+| --------------------------------------------- | ------------------------------- |
+| Custom Build Step -> General -> Command Line  | mdmerge /i "$(OutDir)" /o "$(OutDir)" /partial /metadata_dir "$(WindowsSDK_MetadataPath)" 
+| Custom Build Step -> General -> Output        | $(OutDir)%(RootNamespace).winmd |
+| Custom Build Step -> General -> Execute After | Midl                            |
 
 Finally, the generated header file (_%(RootNamespace)\_h.h_) needs to be referenced in the class definition file (_*.cpp_) as shown in the generic example below. Notice the __InspectableClass__ using a string definition from the header, and the __ActivatableClass__ section.
 
