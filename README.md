@@ -9,6 +9,7 @@ Sample implementations of different Microsoft Media Foundation components
 * MSDN, Windows 8.1 Media extension sample, [http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096](http://code.msdn.microsoft.com/windowsapps/media-extensions-sample-7b466096)
 * tenouk.com, DLLs and linking, [http://www.tenouk.com/ModuleBB.html](http://www.tenouk.com/ModuleBB.html) 
 * MSDN, Windows Runtime C++ Template Library (WRL), [http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx](http://msdn.microsoft.com/en-us/library/vstudio/hh438466.aspx)
+* MSDN, Walkthrough: Creating a Windows Store app using WRL and Media Foundation, [http://msdn.microsoft.com/en-us/library/jj872764.aspx](http://msdn.microsoft.com/en-us/library/jj872764.aspx) 
 
 ## Core MF concepts
 
